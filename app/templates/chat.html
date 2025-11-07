@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Чат {{ chat.title }}{% endblock %}
+{% block content %}
+<article>
+  <header class="chat-header">
+    <h2>{{ chat.title }}</h2>
+    {% if chat.description %}
+    <p class="muted">{{ chat.description }}</p>
+    {% endif %}
+    <p class="muted">Участники: {{ chat.participants | map(attribute='display_name') | join(', ') }}</p>
+  </header>
+
+  <section class="messages">
+    {% for message in chat.messages %}
+    <div class="message">
+      <strong>{{ message.author.display_name }}</strong>
+      <span class="muted">{{ message.created_at }}</span>
+      <p>{{ message.content }}</p>
+    </div>
+    {% else %}
+    <p class="muted">Сообщений пока нет.</p>
+    {% endfor %}
+  </section>
+
+  <section class="form-section">
+    <h3>Новое сообщение</h3>
+    <form method="post" action="{{ url_for('web.post_message', chat_id=chat.id) }}">
+      <label>Автор
+        <select name="author_id" required>
+          <option value="" disabled selected>Выберите участника</option>
+          {% for user in users %}
+          <option value="{{ user.id }}">{{ user.display_name }} (ID {{ user.id }})</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label>Сообщение
+        <textarea name="content" rows="3" required></textarea>
+      </label>
+      <button type="submit">Отправить</button>
+    </form>
+  </section>
+</article>
+{% endblock %}
+

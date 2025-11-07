@@ -1,0 +1,137 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f8;
+  color: #1f1f1f;
+}
+
+header {
+  background-color: #1f75fe;
+  color: #fff;
+  padding: 1.5rem;
+}
+
+header h1 {
+  margin: 0 0 0.5rem 0;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  margin-right: 1rem;
+}
+
+main {
+  padding: 2rem;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem 0;
+}
+
+.list li {
+  background: #fff;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+label {
+  display: grid;
+  gap: 0.25rem;
+  font-weight: 600;
+}
+
+input,
+textarea,
+select {
+  padding: 0.5rem;
+  border: 1px solid #c6c6c6;
+  border-radius: 6px;
+  font: inherit;
+}
+
+button {
+  justify-self: start;
+  background-color: #1f75fe;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+button:hover {
+  background-color: #155bd9;
+}
+
+.muted {
+  color: #5a5a5a;
+  font-size: 0.9rem;
+}
+
+.flashes {
+  list-style: none;
+  margin: 1rem 0 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.flashes li {
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+}
+
+.flashes li.success {
+  background: #e6f7ff;
+  color: #005a9e;
+}
+
+.flashes li.error {
+  background: #ffe8e6;
+  color: #b30000;
+}
+
+.messages {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.message {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+  margin-bottom: 1.5rem;
+}
+
+.form-section {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+

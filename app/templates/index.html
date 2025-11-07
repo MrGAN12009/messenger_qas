@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+<section class="grid">
+  <article>
+    <h2>Пользователи</h2>
+    <ul class="list">
+      {% for user in users %}
+      <li>
+        <strong>{{ user.display_name }}</strong>
+        <span class="muted">@{{ user.username }}</span>
+        {% if user.email %}<span class="muted">{{ user.email }}</span>{% endif %}
+        <span class="muted">ID: {{ user.id }}</span>
+      </li>
+      {% else %}
+      <li class="muted">Пока нет пользователей.</li>
+      {% endfor %}
+    </ul>
+
+    <h3>Создать пользователя</h3>
+    <form method="post" action="{{ url_for('web.create_user') }}">
+      <label>Логин
+        <input type="text" name="username" required />
+      </label>
+      <label>Отображаемое имя
+        <input type="text" name="display_name" required />
+      </label>
+      <label>E-mail
+        <input type="email" name="email" />
+      </label>
+      <button type="submit">Создать</button>
+    </form>
+  </article>
+
+  <article>
+    <h2>Чаты</h2>
+    <ul class="list">
+      {% for chat in chats %}
+      <li>
+        <a href="{{ url_for('web.view_chat', chat_id=chat.id) }}">
+          {{ chat.title }}
+        </a>
+        <div class="muted">
+          Участники: {{ chat.participants | map(attribute='display_name') | join(', ') or '—' }}
+        </div>
+      </li>
+      {% else %}
+      <li class="muted">Чатов пока нет.</li>
+      {% endfor %}
+    </ul>
+
+    <h3>Создать чат</h3>
+    <form method="post" action="{{ url_for('web.create_chat') }}">
+      <label>Название
+        <input type="text" name="title" required />
+      </label>
+      <label>Описание
+        <textarea name="description" rows="2"></textarea>
+      </label>
+      <label>ID участников (через запятую)
+        <input type="text" name="participant_ids" placeholder="1,2" required />
+      </label>
+      <button type="submit">Создать чат</button>
+    </form>
+  </article>
+</section>
+{% endblock %}
+
